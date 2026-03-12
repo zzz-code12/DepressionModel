@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depression Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="main-header">Depression Dashboard</h1>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home Icon" class="icon">
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('prediction') }}">
+                        <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction Icon" class="icon">
+                        <span class="text">Prediction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('result') }}">
+                        <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results Icon" class="icon">
+                        <span class="text">Results</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Icon" class="icon">
+                        <span class="text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <form action="/predict" method="POST">
+                <h2>Student Depression Prediction Form</h2>
+
+                <!-- Gender -->
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="1" required> Male</label>
+                    <label><input type="radio" name="gender" value="0"> Female</label>
+                </div>
+
+                <!-- Academic Pressure -->
+                <label>Academic Pressure (1=Low, 5=High)</label>
+                <input type="number" name="academic_pressure" min="1" max="5" required>
+
+                <!-- CGPA -->
+                <label>CGPA (0.0 to 10.0)</label>
+                <input type="number" name="cgpa" min="0" max="10" step="0.01" required>
+
+                <!-- Study Satisfaction -->
+                <label>Study Satisfaction (1=Low, 5=High)</label>
+                <input type="number" name="study_satisfaction" min="1" max="5" required>
+
+                <!-- Sleep Duration -->
+                <label>Sleep Duration</label>
+                <select name="sleep_duration" required>
+                    <option value="">Select Sleep Duration</option>
+                    <option value="1">Less than 5 hours</option>
+                    <option value="2">5-6 hours</option>
+                    <option value="3">7-8 hours</option>
+                    <option value="4">More than 8 hours</option>
+                </select>
+
+                <!-- Dietary Habits -->
+                <label>Dietary Habits</label>
+                <select name="dietary_habits" required>
+                    <option value="">Select Dietary Habits</option>
+                    <option value="1">Unhealthy</option>
+                    <option value="2">Moderate</option>
+                    <option value="3">Healthy</option>
+                </select>
+
+                <!-- Degree -->
+                <label>Education Level</label>
+                <select name="degree" required>
+                    <option value="">Select Education Level</option>
+                    <option value="1">Undergraduate</option>
+                    <option value="2">Postgraduate</option>
+                    <option value="3">Other</option>
+                </select>
+
+                <!-- Suicidal Thoughts -->
+                <label>Have you ever had suicidal thoughts?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="suicidal_thoughts" value="1" required> Yes</label>
+                    <label><input type="radio" name="suicidal_thoughts" value="0"> No</label>
+                </div>
+
+                <!-- Work/Study Hours -->
+                <label>Work/Study Hours (per day)</label>
+                <input type="number" name="work_study_hours" min="0" max="12" required>
+
+                <!-- Financial Stress -->
+                <label>Financial Stress (1=Low, 5=High)</label>
+                <input type="number" name="financial_stress" min="1" max="5" required>
+
+                <!-- Family History -->
+                <label>Family History of Mental Illness</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="family_history" value="1" required> Yes</label>
+                    <label><input type="radio" name="family_history" value="0"> No</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Predict</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

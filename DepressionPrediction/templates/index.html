@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depression Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="main-header">Depression Dashboard</h1>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home Icon" class="icon">
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('prediction') }}">
+                        <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction Icon" class="icon">
+                        <span class="text">Prediction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('result') }}">
+                        <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results Icon" class="icon">
+                        <span class="text">Results</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Icon" class="icon">
+                        <span class="text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="about-container">
+                <h2>About This Project</h2>
+                <p>This is a Student Depression Prediction System built using Machine Learning.</p>
+                <p>The model was trained on a dataset of 27790 students using Logistic Regression with 83.56% accuracy.</p>
+
+                <h3>How it works:</h3>
+                <p>Fill in the prediction form with your information and the model will predict if you are showing signs of depression.</p>
+
+                <h3>Disclaimer:</h3>
+                <p>This is not a medical diagnosis. Please consult a professional if you are experiencing mental health issues.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

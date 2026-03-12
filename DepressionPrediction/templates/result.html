@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depression Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="main-header">Depression Dashboard</h1>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home Icon" class="icon">
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('prediction') }}">
+                        <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction Icon" class="icon">
+                        <span class="text">Prediction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('result') }}">
+                        <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results Icon" class="icon">
+                        <span class="text">Results</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('about') }}">
+                        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Icon" class="icon">
+                        <span class="text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="result-container">
+                <h2>Prediction Result</h2>
+
+                <!-- Result Display -->
+                {% if result == "Depressed" %}
+                <div class="result-box depressed">
+                    <h3>⚠️ {{ result }}</h3>
+                    <p>{{ message }}</p>
+                </div>
+                {% else %}
+                <div class="result-box not-depressed">
+                    <h3>✅ {{ result }}</h3>
+                    <p>{{ message }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Try Again Button -->
+                <a href="{{ url_for('prediction') }}" 
+                   class="submit-btn">Try Again</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

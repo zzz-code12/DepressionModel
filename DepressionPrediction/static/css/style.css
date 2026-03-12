@@ -1,0 +1,129 @@
+body{
+  background-color: #1C1F26;
+  font-family: 'League Spartan', sans-serif;
+}
+.main-header {
+  color: #D6D9E0;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Sidebar */
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 70px;
+  background-color: #7A7F8C;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-right: 1px solid #3E4454;
+  transition: width 0.3s ease;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* keep items vertically centered */
+}
+
+/* Sidebar hover expands */
+.sidebar:hover {
+  width: 220px;
+  align-items: flex-start;   /* left-align items when expanded */
+  padding-left: 20px;        /* optional: add spacing from edge */
+}
+
+/* Menu items */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;                 /* spacing between items */
+}
+
+.sidebar:hover ul {
+  align-items: flex-start;  /* left-align when expanded */
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #D6D9E0;
+  padding: 15px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  background-origin: border-box; /* ensure background covers the entire area including borders */
+}
+
+.sidebar a:hover {
+  background-color: #323845;
+  border-radius: 10px;
+}
+
+/* Icon styling */
+.sidebar a .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  flex-shrink: 0;          /* keep icon size fixed */
+  filter: brightness(0) invert(1); /* make icons white */
+}
+
+
+/* Text styling */
+.sidebar a .text {
+  white-space: nowrap;
+  opacity: 0;               /* hide text initially */
+  transition: opacity 0.3s ease;
+  flex-grow: 1;
+}
+
+/* Show text when sidebar is hovered */
+.sidebar:hover a .text {
+  opacity: 1;
+}
+
+/* Main content moves with sidebar */
+.content {
+  margin-left: 70px;
+  padding: 40px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .content {
+  margin-left: 220px;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.result-box {
+    margin: 20px auto;
+    width: fit-content;
+    color: white;
+}
