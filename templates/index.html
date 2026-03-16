@@ -2,54 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Depression Dashboard</title>
+    <title>Home — Depression Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="main-header">Depression Dashboard</h1>
+    <h1 class="main-header"><span>Depression</span> Dashboard</h1>
 
     <div class="layout">
         <nav class="sidebar">
             <ul>
-                <li>
-                    <a href="{{ url_for('home') }}">
-                        <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home Icon" class="icon">
-                        <span class="text">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('prediction') }}">
-                        <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction Icon" class="icon">
-                        <span class="text">Prediction</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('result') }}">
-                        <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results Icon" class="icon">
-                        <span class="text">Results</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('about') }}">
-                        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Icon" class="icon">
-                        <span class="text">About</span>
-                    </a>
-                </li>
+                <li><a href="{{ url_for('home') }}" class="active">
+                    <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home" class="icon">
+                    <span class="text">Home</span>
+                </a></li>
+                <li><a href="{{ url_for('prediction') }}">
+                    <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction" class="icon">
+                    <span class="text">Prediction</span>
+                </a></li>
+                <li><a href="{{ url_for('result') }}">
+                    <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results" class="icon">
+                    <span class="text">Results</span>
+                </a></li>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='images/about.png') }}" alt="About" class="icon">
+                    <span class="text">About</span>
+                </a></li>
             </ul>
         </nav>
 
         <main>
-            <div class="about-container">
-                <h2>About This Project</h2>
-                <p>This is a Student Depression Prediction System built using Machine Learning.</p>
-                <p>The model was trained on a dataset of 27790 students using Logistic Regression with 83.56% accuracy.</p>
+            <div class="hero">
+                <span class="tag">ML-Powered Mental Health Tool</span>
+                <h2 class="page-title">Early detection starts<br><em>with awareness.</em></h2>
+                <p class="page-subtitle">Answer a short set of questions about your lifestyle and academic experience. Our model will assess whether you may be showing signs of depression.</p>
+                <a href="{{ url_for('prediction') }}" class="submit-btn" style="margin-top: 20px;">Start Prediction →</a>
+            </div>
 
-                <h3>How it works:</h3>
-                <p>Fill in the prediction form with your information and the model will predict if you are showing signs of depression.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="num">83.56%</div>
+                    <div class="label">Model Accuracy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">27,790</div>
+                    <div class="label">Students in Dataset</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">&lt; 1 min</div>
+                    <div class="label">Time to Complete</div>
+                </div>
+            </div>
 
-                <h3>Disclaimer:</h3>
-                <p>This is not a medical diagnosis. Please consult a professional if you are experiencing mental health issues.</p>
+            <div style="margin-top: 40px; margin-bottom: 16px;">
+                <h3 style="font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--text);">What we assess</h3>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h4>Academic Factors</h4>
+                    <p>Academic pressure, CGPA, study satisfaction, and work/study hours per day.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛌</div>
+                    <h4>Lifestyle Habits</h4>
+                    <p>Sleep duration and dietary habits — two key indicators of overall wellbeing.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h4>Stressors</h4>
+                    <p>Financial stress and personal history of suicidal thoughts.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧬</div>
+                    <h4>Background</h4>
+                    <p>Family history of mental illness and current education level.</p>
+                </div>
             </div>
         </main>
     </div>

@@ -2,63 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Depression Dashboard</title>
+    <title>Result — Depression Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="main-header">Depression Dashboard</h1>
+    <h1 class="main-header"><span>Depression</span> Dashboard</h1>
 
     <div class="layout">
         <nav class="sidebar">
             <ul>
-                <li>
-                    <a href="{{ url_for('home') }}">
-                        <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home Icon" class="icon">
-                        <span class="text">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('prediction') }}">
-                        <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction Icon" class="icon">
-                        <span class="text">Prediction</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('result') }}">
-                        <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results Icon" class="icon">
-                        <span class="text">Results</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('about') }}">
-                        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Icon" class="icon">
-                        <span class="text">About</span>
-                    </a>
-                </li>
+                <li><a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home" class="icon">
+                    <span class="text">Home</span>
+                </a></li>
+                <li><a href="{{ url_for('prediction') }}">
+                    <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction" class="icon">
+                    <span class="text">Prediction</span>
+                </a></li>
+                <li><a href="{{ url_for('result') }}" class="active">
+                    <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results" class="icon">
+                    <span class="text">Results</span>
+                </a></li>
+                <li><a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='images/about.png') }}" alt="About" class="icon">
+                    <span class="text">About</span>
+                </a></li>
             </ul>
         </nav>
 
         <main>
-            <div class="result-container">
-                <h2>Prediction Result</h2>
+            <div class="hero" style="margin-bottom: 8px;">
+                <span class="tag">Prediction Complete</span>
+                <h2 class="page-title">Your Result</h2>
+            </div>
 
-                <!-- Result Display -->
+            <div class="result-container">
                 {% if result == "Depressed" %}
                 <div class="result-box depressed">
-                    <h3>⚠️ {{ result }}</h3>
+                    <span class="result-icon">⚠️</span>
+                    <h3>{{ result }}</h3>
                     <p>{{ message }}</p>
                 </div>
                 {% else %}
                 <div class="result-box not-depressed">
-                    <h3>✅ {{ result }}</h3>
+                    <span class="result-icon">✅</span>
+                    <h3>{{ result }}</h3>
                     <p>{{ message }}</p>
                 </div>
                 {% endif %}
 
-                <!-- Try Again Button -->
-                <a href="{{ url_for('prediction') }}" 
-                   class="submit-btn">Try Again</a>
+                <div class="disclaimer" style="margin-top: 0;">
+                    <p><strong>⚠️ Remember:</strong> This result is not a clinical diagnosis. It is based on a machine learning model trained on student data. Please speak to a mental health professional if you have concerns.</p>
+                </div>
+
+                <a href="{{ url_for('prediction') }}" class="submit-btn">← Try Again</a>
             </div>
         </main>
     </div>

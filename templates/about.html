@@ -1,35 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="static/css/style.css"> <!--connecting the css file to the html file-->
-    <link
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <h1 class="main-header">Depression Dashboard</h1>
+    <meta charset="UTF-8">
+    <title>About — Depression Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class ="layout">
-      <nav class = "sidebar">
-          <ul>
-              <li>
-                <a href="templates/index.html">
-                  <img src="static/images/home.png" alt="Home Icon" class="icon">
-                  <span class = "text">Home</span>
-                </a>
-              </li>
-              <li><a href="templates/prediction.html">
-                <img src="static/images/prediction.png" alt="Prediction Icon" class="icon">
-                <span class = "text">Prediction</span>
-              </a></li>
-              <li><a href="templates/result.html">
-                <img src="static/images/results.png" alt="Results Icon" class="icon">
-                <span class = "text">Results</span>
-              </a></li>
-              <li><a href="templates/about.html">
-                <img src="static/images/about.png" alt="About Icon" class="icon">
-                <span class = "text">About</span>
-              </a></li>
-          </ul>
-     </nav>
-  </div>
+    <h1 class="main-header"><span>Depression</span> Dashboard</h1>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home" class="icon">
+                    <span class="text">Home</span>
+                </a></li>
+                <li><a href="{{ url_for('prediction') }}">
+                    <img src="{{ url_for('static', filename='images/prediction.png') }}" alt="Prediction" class="icon">
+                    <span class="text">Prediction</span>
+                </a></li>
+                <li><a href="{{ url_for('result') }}">
+                    <img src="{{ url_for('static', filename='images/results.png') }}" alt="Results" class="icon">
+                    <span class="text">Results</span>
+                </a></li>
+                <li><a href="{{ url_for('about') }}" class="active">
+                    <img src="{{ url_for('static', filename='images/about.png') }}" alt="About" class="icon">
+                    <span class="text">About</span>
+                </a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="hero">
+                <span class="tag">About This Project</span>
+                <h2 class="page-title">Student Depression<br><em>Prediction System</em></h2>
+                <p class="page-subtitle">An ML-powered tool designed to help identify signs of depression in students.</p>
+            </div>
+
+            <div class="about-section">
+                <h3>What is this?</h3>
+                <p>This dashboard is a Student Depression Prediction System built with Machine Learning. It analyzes key lifestyle, academic, and personal factors to assess whether a student may be exhibiting signs of depression — offering a fast, accessible first step toward awareness and help.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="about-section">
+                <h3>The Model</h3>
+                <p>The prediction model was trained on a dataset of student mental health records using Logistic Regression. Here's a summary of the model's performance:</p>
+                <div class="model-stats">
+                    <div class="model-stat">
+                        <div class="num">83.56%</div>
+                        <div class="lbl">Accuracy</div>
+                    </div>
+                    <div class="model-stat">
+                        <div class="num">27,790</div>
+                        <div class="lbl">Training Samples</div>
+                    </div>
+                    <div class="model-stat">
+                        <div class="num">11</div>
+                        <div class="lbl">Input Features</div>
+                    </div>
+                </div>
+                <p>Input features include academic pressure, CGPA, sleep habits, dietary patterns, suicidal ideation history, financial stress, work/study hours, and family history of mental illness.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="about-section">
+                <h3>How to use it</h3>
+                <p>Navigate to the <strong>Prediction</strong> page and fill in the form with honest responses about your current lifestyle and academic situation. The model will analyze your inputs and return a prediction on whether you are showing signs of depression.</p>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>⚠️ Medical Disclaimer:</strong> This tool is not a substitute for professional mental health diagnosis or treatment. The results are for informational and awareness purposes only. If you or someone you know is experiencing mental health difficulties, please consult a qualified healthcare professional or counselor.</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
